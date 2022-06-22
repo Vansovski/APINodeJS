@@ -8,7 +8,7 @@ const db = require("./dataBase/index");
 const seq = require("./dataBase/seq");
 
 //Models
-const Usuario = require("./Model/Usuario");
+const Usuario = require("./app/Model/Usuario");
 
 //Instacia do express
 const app = express();
@@ -17,11 +17,8 @@ const app = express();
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: false }));
 
-//Passando app para o Controller
-require('./controller/authController')(app);
-
-//Passando app para o Controller
-require('./controller/projectController')(app);
+//Passando app para todos Controller
+require('./app/controller/index')(app);
 
 //Porta de escuta
 let PORTA = 3033;

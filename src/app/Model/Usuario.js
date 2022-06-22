@@ -1,5 +1,5 @@
 //Banco de Dados
-const db = require("../dataBase/seq");
+const db = require("../../dataBase/seq");
 const Sequelize = require('sequelize');
 
 
