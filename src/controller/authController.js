@@ -1,5 +1,6 @@
 const express = require("express");
 const { route } = require("express/lib/application");
+const bcrypt = require('bcryptjs');
 
 const User = require("../Model/Usuario");
 
@@ -19,9 +20,14 @@ router.post("/register", async (req, resp) => {
       data:{userAlredy}
     });
     }
+    const {senha} = req.body;
+    //cripto da senha 
+    const hash = await bcrypt.hash(senha,10);
+    req.body.senha = hash;
     //Cria o usuario no banco de dados
     const user = await User.create(req.body);
-    user.senha = undefined;
+    //Remove senha do retorno
+    //user.senha = undefined;
     //Retorno da API
     return resp.send({ user });
   } catch (error) {
@@ -30,5 +36,11 @@ router.post("/register", async (req, resp) => {
     return resp.status(400).send({ error: "Falha no registro " });
   }
 });
+
+
+
+
+
+
 
 module.exports = (app) => app.use("/auth", router);
