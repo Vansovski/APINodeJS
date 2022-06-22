@@ -17,6 +17,9 @@ const app = express();
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: false }));
 
+require('./controller/authController')(app);
+
+
 //Porta de escuta
 let PORTA = 3000;
 
@@ -29,20 +32,3 @@ app.listen(3000, () => {
 app.get("/", (req, resp) => {
   resp.json({"saida":"OK"});
 });
-
-
-//index.js
-(async () => { 
-    try {
-        const resultado = await seq.sync();
-        console.log(resultado);
- 
-        const resultadoCreate = await Usuario.create({
-            nome: 'Marcelo',
-            email: 'marcelo@example.com'
-        })
-        console.log(resultadoCreate);
-    } catch (error) {
-        console.log(error);
-    }
-})();
