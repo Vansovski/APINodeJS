@@ -21,8 +21,7 @@ const Usuario = db.define('usuario', {
         lowercase: true
     },
     senha: {
-        type: Sequelize.UUID,
-        select: false
+        type: Sequelize.STRING
     }
 })
 

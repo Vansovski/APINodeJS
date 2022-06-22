@@ -17,14 +17,14 @@ const app = express();
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: false }));
 
+//Passando app para o Controller
 require('./controller/authController')(app);
 
-
 //Porta de escuta
-let PORTA = 3000;
+let PORTA = 3033;
 
 //Run do Servidor
-app.listen(3000, () => {
+app.listen(PORTA, () => {
   console.log("Servidor vivo %PORT%".replace("%PORT%", PORTA));
 });
 
