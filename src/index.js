@@ -20,6 +20,9 @@ app.use(bodyParse.urlencoded({ extended: false }));
 //Passando app para o Controller
 require('./controller/authController')(app);
 
+//Passando app para o Controller
+require('./controller/projectController')(app);
+
 //Porta de escuta
 let PORTA = 3033;
 
