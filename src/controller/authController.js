@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const auth =require('../config/auth.json');
 
+
 const User = require("../Model/Usuario");
 
 const router = express.Router();
