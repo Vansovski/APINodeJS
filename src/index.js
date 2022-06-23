@@ -10,7 +10,7 @@ const seq = require("./dataBase/seq");
 //Models
 const Usuario = require("./app/models/Usuario");
 const Projeto = require('./app/models/Projeto');
-const Tarefa = require('./app/models/Tarefas');
+const Tarefa = require('./app/models/Tarefa');
 
 //Instacia do express
 const app = express();
@@ -23,7 +23,7 @@ app.use(bodyParse.urlencoded({ extended: false }));
 require('./app/controller/index')(app);
 
 //Porta de escuta
-let PORTA = 3033;
+let PORTA = 3030;
 
 //Run do Servidor
 app.listen(PORTA, () => {
