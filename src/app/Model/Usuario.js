@@ -22,7 +22,16 @@ const Usuario = db.define('usuario', {
     },
     senha: {
         type: Sequelize.STRING
+    },
+    passwordResetExpires:{
+        type: Sequelize.DATE,
+        select: false
+    },
+    passwordResetToken:{
+        type: Sequelize.STRING,
+        select: false
     }
+
 })
 
 //Criação da tabela
