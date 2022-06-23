@@ -8,7 +8,9 @@ const db = require("./dataBase/index");
 const seq = require("./dataBase/seq");
 
 //Models
-const Usuario = require("./app/Model/Usuario");
+const Usuario = require("./app/models/Usuario");
+const Projeto = require('./app/models/Projeto');
+const Tarefa = require('./app/models/Tarefas');
 
 //Instacia do express
 const app = express();

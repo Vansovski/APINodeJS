@@ -7,7 +7,8 @@ const mailer = require("../../modules/mailer");
 
 const crypto = require("crypto");
 
-const User = require("../Model/Usuario");
+const User = require("../models/Usuario");
+const Projeto = require("../models/Projeto");
 
 const router = express.Router();
 
@@ -54,7 +55,7 @@ router.post("/register", async (req, resp) => {
 router.post("/authenticate", async (req, resp) => {
   const { email, senha } = req.body;
   //Verifica se já existe cadastro
-  const userAlredy = await User.findOne({ where: { email: email } });
+  const userAlredy = await User.findOne({ where: { email: email }, include: Projeto});
   if (!userAlredy || !(await bcrypt.compare(senha, userAlredy.senha))) {
     return resp.status(400).send("Corrija senha e/ou email!");
   }

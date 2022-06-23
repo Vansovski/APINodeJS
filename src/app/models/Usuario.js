@@ -32,9 +32,11 @@ const Usuario = db.define('usuario', {
         select: false
     }
 
-})
+});
 
-//Criação da tabela
-Usuario.sync();
+
+    //Criação da tabela
+    Usuario.sync({force: true});
+
 
 module.exports = Usuario;
