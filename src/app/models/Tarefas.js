@@ -29,7 +29,12 @@ const Tarefa = db.define('tarefa', {
    dataFim:{
     type: Sequelize.DATE,
     allowNull: true
+   },
+   completa:{
+       type: Sequelize.BOOLEAN,
+       default: false
    }
+
 });
 
 
