@@ -38,10 +38,10 @@ const Tarefa = db.define('tarefa', {
 });
 
 
-Projeto.hasMany(Tarefa);
+Projeto.hasMany(Tarefa,{onDelete: 'CASCADE'});
 Tarefa.belongsTo(Projeto);
 
-User.hasMany(Tarefa);
+User.hasMany(Tarefa,{onDelete: 'CASCADE'});
 Tarefa.belongsTo(User);
 
 
@@ -49,4 +49,4 @@ Tarefa.belongsTo(User);
 //Criação da tabela
 Tarefa.sync({force: true});
 
-module.exports = Projeto;
+module.exports = Tarefa;

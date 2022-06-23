@@ -25,7 +25,18 @@ router.get('/',async (req, resp) => {
 router.post('/',async (req, resp) => {
     try {
 
+    const {titulo, descricao,  tarefas} = req.body;
+
     const projeto = await Projeto.create(req.body);
+
+    await Promise.all(tarefas.map( async (tarefa) => {
+        console.log(tarefa);
+        
+        const tarefaProjeto = await Tarefa.create({...tarefa, projetoId: projeto.id});
+
+    }));
+
+    
     return resp.status(200).send(projeto);
 
     } catch (error) {
@@ -39,7 +50,7 @@ router.get('/:projetoId',async (req, resp) => {
     try {
         const {projetoId} = req.params;
 
-        const projeto = await Projeto.findOne({where:{id:projetoId}});
+        const projeto = await Projeto.findOne({where:{id:projetoId}, include: { all: true }});
         if(!projeto)
         {
             return resp.status(400).send({messge:'Não encontrado'});

@@ -32,13 +32,13 @@ const Projeto = db.define('projeto', {
 });
 
 
-User.hasMany(Projeto);
+User.hasMany(Projeto, {onDelete: 'CASCADE'});
 
 Projeto.belongsTo(User);
 
 
 
-    //Criação da tabela
+//Criação da tabela
 Projeto.sync({force: true});
 
 
